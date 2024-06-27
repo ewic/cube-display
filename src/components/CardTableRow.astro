@@ -1,0 +1,23 @@
+---
+
+interface props {
+    card: object
+}
+
+const { card } = Astro.props;
+
+---
+
+<tr>
+    <td>{card.Color}</td>
+    <td>{card.name}</td>
+    <td>{card.Type}</td>
+    <td>{card.CMC}</td>
+    <td>{card.status}</td>
+</tr>
+
+<style>
+    tr:hover {
+        background-color: aquamarine;
+    }
+</style>

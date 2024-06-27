@@ -2,13 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import CardList from '../components/CardList.astro';
+import type { CardDataType } from '../components/Card.astro';
 import CardData from '../data/cards.json';
+import CardTable from '../components/CardTable.astro';
 ---
 
 
 <Layout title="Eric's Pauper Cube List">
 	<main>
-		<CardList cards={CardData} />
+		<CardTable data={CardData} />
 	</main>
 </Layout>
 

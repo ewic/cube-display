@@ -2,10 +2,10 @@
 import { string } from 'astro/zod'
 
 interface Props {
-	card: CardData
+	card: CardDataType
 }
  
-type CardData = {
+export type CardDataType = {
     "name": string,
     "CMC": number,
     "Type": string,
@@ -25,25 +25,34 @@ type CardData = {
   }
 
 const { card } = Astro.props;
+
 ---
 
-<div class="link-card">
-	{card.name}
+<div class="card">
+	<img src={card['image URL']} />
+	<div class="infopanel">
+		{card.name}<br />
+		{card.Type}<br />
+		{card.CMC}<br />
+		{card.Color}<br />
+	</div>
 </div>
 <style>
-	.link-card {
+	.card {
 		list-style: none;
 		display: flex;
 		padding: 1px;
 		background-color: #23262d;
-		background-image: none;
+		background-image: url(imageURL);
 		background-size: 400%;
 		border-radius: 7px;
 		background-position: 100%;
+		width: 10em;
+		height: 14em;
 		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 	}
-	.link-card > a {
+	.card > a {
 		width: 100%;
 		text-decoration: none;
 		line-height: 1.4;
@@ -62,11 +71,15 @@ const { card } = Astro.props;
 		margin-top: 0.5rem;
 		margin-bottom: 0;
 	}
-	.link-card:is(:hover, :focus-within) {
+	.card:is(:hover, :focus-within) {
 		background-position: 0;
 		background-image: var(--accent-gradient);
 	}
-	.link-card:is(:hover, :focus-within) h2 {
+	.card:is(:hover, :focus-within) h2 {
 		color: rgb(var(--accent-light));
+	}
+
+	.infopanel {
+		font-family: Arial, Helvetica, sans-serif
 	}
 </style>

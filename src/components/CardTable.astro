@@ -1,0 +1,41 @@
+---
+import type { CardDataType } from './Card.astro'
+import CardTableRow from './CardTableRow.astro';
+
+interface Props {
+    data: Array<CardDataType>
+}
+
+const { data } = Astro.props;
+
+let cards = data;
+
+function sort(attribute: string) {
+    console.log(attribute)
+    return
+}
+
+---
+
+<table class="card-table">
+    <thead>
+        <th>Color</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>CMC</th>
+        <th>Owned</th>
+    </thead>
+    {cards.map((card) => {
+        return(<CardTableRow card={card} />)
+    })}
+</table>
+
+<style>
+    .card-table {
+
+    }
+
+    .card-table tr {
+        background-color: rgba(17, 32, 85, 0.348);
+    }
+</style>
